@@ -1,41 +1,212 @@
-{% extends "templates/layout.html" %}
-{% set activePage = "notes" %}
-
-
-{% block title %}Lecture Notes{% endblock %}
 
 
 
-{% block content %}
+<!doctype html>
+<html lang="en">
+	<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+			<title>Lecture Notes</title>
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Alegreya+SC&family=Alegreya:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+			<link rel="stylesheet" href="styles/styles.css" media="all">
+
+			<script>
+				MathJax = {
+					tex: {inlineMath: [['$','$'], ['\\(','\\)']]}
+				};
+			</script>
+			<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+			
+			
+	</head>
+
+
+	<body>
+		<div class="page-bounds">
+			<header class="page-header">
+				<p class="site-title"><a href="index.html">Timothy Magee</a></p>
+				
+				<nav>
+					<ul class="nav-list">
+						<li class="nav-item "><a href="index.html">Home</a></li>
+						<li class="nav-item "><a href="articles.html">Articles</a></li>
+						<li class="nav-item -active"><a href="notes.html">Lecture Notes</a></li>
+						<li class="nav-item "><a href="cv.html">CV</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<main>
+				
 <h1 class="page-title">Lecture Notes</h1>
-{% for category, notes in data.notes | groupby("category") %}
-<h2 {% if loop.index == 1 %}class="u-margin-top-none"{% endif %}>
-	{% if category == "course" %}	
+
+<h2 class="u-margin-top-none">
+		
 		Courses and Minicourses
-	{% elif category == "seminar" %}
-		Seminar Talks
-	{% endif %}
+	
 </h2>
 
 <div class="lecture-notes">
 
-	{% for note in notes %}
+	
 	<div class="lecture-note">
-		<h3 class="lecture-note__title">{{ note.title }}</h3>
-		<p>{{ note.description | safe}}</p>
-		<!--	 <p><a href="{{ note.location.url }}">{{ note.location.name }}</a></p> -->
+		<h3 class="lecture-note__title">Toric Varieties Course</h3>
+		<p>These are the lecture notes from an <a href="http://www.ltcc.ac.uk/archive/courses/toric-varieties/">LTCC graduate course</a> I taught on toric varieties.</p>
+		<!--	 <p><a href="http://www.ltcc.ac.uk/archive/courses/toric-varieties/">LTCC</a></p> -->
 		<ul class="lecture-note-files">
-			{% for file in note.files  %}
+			
 			<li class="lecture-note-file">
-				<a href="{{ file.path }}{{ file.filename }}">
-					<span class="lecture-note-file__title">{{ file.name }} (PDF)</span>
-					<span class="lecture-note-file__description">{{ file.description }}</span>
+				<a href="assets/notes/ToricVarieties-Lecture1.pdf">
+					<span class="lecture-note-file__title">Toric Varieties- Lecture 1 (PDF)</span>
+					<span class="lecture-note-file__description">Why study toric varieties, algebraic geometry background, algebraic tori</span>
 				</a>
 			</li>
-			{% endfor %}
+			
+			<li class="lecture-note-file">
+				<a href="assets/notes/ToricVarieties-Lecture2.pdf">
+					<span class="lecture-note-file__title">Toric Varieties- Lecture 2 (PDF)</span>
+					<span class="lecture-note-file__description">Affine toric varieties, normality</span>
+				</a>
+			</li>
+			
+			<li class="lecture-note-file">
+				<a href="assets/notes/ToricVarieties-Lecture3.pdf">
+					<span class="lecture-note-file__title">Toric Varieties- Lecture 3 (PDF)</span>
+					<span class="lecture-note-file__description">Fans, smooth toric varieties</span>
+				</a>
+			</li>
+			
+			<li class="lecture-note-file">
+				<a href="assets/notes/ToricVarieties-Lecture4.pdf">
+					<span class="lecture-note-file__title">Toric Varieties- Lecture 4 (PDF)</span>
+					<span class="lecture-note-file__description">Separated toric varieties</span>
+				</a>
+			</li>
+			
+			<li class="lecture-note-file">
+				<a href="assets/notes/ToricVarieties-Lecture5.pdf">
+					<span class="lecture-note-file__title">Toric Varieties- Lecture 5 (PDF)</span>
+					<span class="lecture-note-file__description">Orbit cone correspondence, morphisms of toric varieties, projective toric varieties</span>
+				</a>
+			</li>
+			
 		</ul>
 	</div>
-	{% endfor %}
+	
+	<div class="lecture-note">
+		<h3 class="lecture-note__title">From Toric Varieties to Cluster Varieties Minicourse</h3>
+		<p>These are the lecture notes for a minicourse I gave at <a href="https://www.matmor.unam.mx/">Centro de Ciencias Matemáticas UNAM Campus Morelia</a> on the path from the theory of toric varieties to an analogous theory for minimal models of cluster varieties.</p>
+		<!--	 <p><a href="https://www.matmor.unam.mx/">CCM UNAM Campus Morelia</a></p> -->
+		<ul class="lecture-note-files">
+			
+			<li class="lecture-note-file">
+				<a href="assets/notes/DeToricaAConglomerado.pdf">
+					<span class="lecture-note-file__title">De Variedades Tóricas a Variedades de Conglomerado (PDF)</span>
+					<span class="lecture-note-file__description">(In Spanish)</span>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+	
 </div>
- {% endfor %}
-{% endblock %}
+ 
+<h2 >
+	
+		Seminar Talks
+	
+</h2>
+
+<div class="lecture-notes">
+
+	
+	<div class="lecture-note">
+		<h3 class="lecture-note__title">Cluster Varieties Lecture</h3>
+		<p>Slides from a talk on cluster varieties in the <a href="https://lekili.duckdns.org/seminars/cut.php">Symplectic Cut seminar</a>.</p>
+		<!--	 <p><a href="https://lekili.duckdns.org/seminars/cut.php">Symplectic Cut</a></p> -->
+		<ul class="lecture-note-files">
+			
+			<li class="lecture-note-file">
+				<a href="assets/notes/ClusterVarieties.pdf">
+					<span class="lecture-note-file__title">Cluster Varieties (PDF)</span>
+					<span class="lecture-note-file__description"></span>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+	
+	<div class="lecture-note">
+		<h3 class="lecture-note__title">Convexity in Tropical Spaces and Compactifications of Cluster Varieties talk</h3>
+		<p>Slides from a talk given in the <a href="https://people.bath.ac.uk/masadk/seminar/geom/#:~:text=The%20Bath%20Algebra%2C%20Geometry%20and,Daniel%20Loughran%2C%20and%20Johannes%20Nordstr%C3%B6m.">Bath Algebra, Geometry and Number Theory Seminar</a>, based on <a href="https://academic.oup.com/imrn/article/2022/14/10858/6211377">joint work</a> with Mandy Cheung and Alfredo Nájera Chávez.</p>
+		<!--	 <p><a href="https://people.bath.ac.uk/masadk/seminar/geom/#:~:text=The%20Bath%20Algebra%2C%20Geometry%20and,Daniel%20Loughran%2C%20and%20Johannes%20Nordstr%C3%B6m.">Bath Algebra, Geometry and Number Theory Seminar</a></p> -->
+		<ul class="lecture-note-files">
+			
+			<li class="lecture-note-file">
+				<a href="assets/notes/ConvexityInTropicalSpacesAndMinimalModels.pdf">
+					<span class="lecture-note-file__title">Convexity in Tropical Spaces and Compactifications of Cluster Varieties (PDF)</span>
+					<span class="lecture-note-file__description"></span>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+	
+	<div class="lecture-note">
+		<h3 class="lecture-note__title">Littlewood-Richardson Coefficients from  Mirror Symmetry talk</h3>
+		<p>Slides from a talk given in the <a href="https://sites.google.com/view/clustersandgeometryseminar/home">Clusters and Geometry Seminar</a> at Yale, based on <a href="https://londmathsoc.onlinelibrary.wiley.com/doi/full/10.1112/plms.12329">my PhD thesis</a>.</p>
+		<!--	 <p><a href="https://sites.google.com/view/clustersandgeometryseminar/home">Yale Clusters and Geometry Seminar</a></p> -->
+		<ul class="lecture-note-files">
+			
+			<li class="lecture-note-file">
+				<a href="assets/notes/LRfromMS.pdf">
+					<span class="lecture-note-file__title">Littlewood-Richardson Coefficients from  Mirror Symmetry (PDF)</span>
+					<span class="lecture-note-file__description"></span>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+	
+	<div class="lecture-note">
+		<h3 class="lecture-note__title">Grassmannians, Plabic Graphs, and Mirror Symmetry for Cluster Varieties talk</h3>
+		<p>Slides from a talk given in the Fanosearch Group Seminar at Imperial College London, based on ongoing joint work with Lara Bossinger, Mandy Cheung, and Alfredo Nájera Chávez.</p>
+		<!--	 <p><a href=""></a></p> -->
+		<ul class="lecture-note-files">
+			
+			<li class="lecture-note-file">
+				<a href="assets/notes/GrassmanniansPlabicGraphsMS.pdf">
+					<span class="lecture-note-file__title">Grassmannians, Plabic Graphs, and Mirror Symmetry for Cluster Varieties (PDF)</span>
+					<span class="lecture-note-file__description"></span>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+	
+	<div class="lecture-note">
+		<h3 class="lecture-note__title">Toric Degenerations of Cluster Varieties talk</h3>
+		<p>Slides from a talk given at the <a href="https://sites.google.com/view/tgrt2019/home">Tropical Geometry Meets Representation Theory II Workshop</a> at the University of Leicester, based on <a href="https://www.cambridge.org/core/journals/compositio-mathematica/article/abs/toric-degenerations-of-cluster-varieties-and-cluster-duality/75F413A9884FFCB728F804DC55D58D91">joint work with Lara Bossinger, Juan Bosco Frías Medina, and Alfredo Nájera Chávez</a>.</p>
+		<!--	 <p><a href="https://sites.google.com/view/tgrt2019/home">Tropical Geometry Meets Representation Theory II</a></p> -->
+		<ul class="lecture-note-files">
+			
+			<li class="lecture-note-file">
+				<a href="assets/notes/ToricDegenOfClusterVarieties.pdf">
+					<span class="lecture-note-file__title">Toric Degenerations of Cluster Varieties (PDF)</span>
+					<span class="lecture-note-file__description"></span>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+	
+</div>
+ 
+
+			</main>
+		</div>
+	</body>
+</html>
