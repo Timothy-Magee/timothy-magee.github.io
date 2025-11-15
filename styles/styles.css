@@ -259,18 +259,42 @@ strong {
   margin: auto;
 }
 .button {
-  padding: 0.25em 1em;
-  border: 0;
-  border-radius: 2px;
-  background-image: linear-gradient(180deg, rgba(184, 145, 38, 0.6) 0%, rgba(145, 112, 23, 0.6) 50%, rgba(77, 58, 8, 0.6) 100%);
-  background-color: var(--secondary-color);
-  color: var(--on-secondary-color);
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  padding: 0.75em 1.25em;
+  border: none;
+  background-color: transparent;
   font-family: "Alegreya SC", serif;
   font-size: 0.8em;
   text-decoration: none;
 }
+.button:before,
+.button:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(214, 170, 65);
+  background-color: rgba(214, 170, 65, 0);
+  transition: transform 300ms ease-in-out, background-color 300ms ease-in-out;
+}
+.button:before {
+  transform: translate(-4px, 4px);
+}
+.button:after {
+  transform: translate(4px, -4px);
+}
 .button:hover {
-  background-image: linear-gradient(180deg, var(--color-palette-gold-40) 0%, var(--color-palette-gold-30) 50%, var(--color-palette-gold-20) 100%);
+  color: #fff;
+}
+.button:hover:before,
+.button:hover:after {
+  transform: translate(0, 0);
+  background-color: #d6aa41;
 }
 .dated-list {
   display: flex;
